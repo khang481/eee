@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 #include "colors.h"
 using namespace std;
+
 Grid::Grid()
 {
     numRows = 20;
@@ -30,7 +31,7 @@ void Grid::Print()
         {
             cout << grid[row][column] << " ";
         }
-        cout << std::endl;
+        cout << endl;
     }
 }
 
