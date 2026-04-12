@@ -17,6 +17,9 @@ Game::Game(){
     PlayMusicStream(music);
     rotateSound = LoadSound("Resources/rotate.mp3");
     clearSound = LoadSound("Resources/clear.mp3");
+    inSettings = false;
+    musicEnabled = true;
+    sfxEnabled = true;
 }
 Game::~Game(){
     UnloadSound(rotateSound);
@@ -64,10 +67,6 @@ void Game::HandleInput(){
     if (gameOver && keyPressed != 0){
         gameOver = false;
         Reset();
-    }
-
-    if (keyPressed == KEY_SPACE){
-        isPaused = !isPaused;
     }
 
     if (isPaused || gameOver) return;
@@ -135,7 +134,7 @@ void Game::RotateBlock(){
     currentBlock.Rotate();
     if (IsBlockOutside() || BlockFits() == false){
         currentBlock.UndoRotation();
-    } else {
+    } else if (sfxEnabled){
         PlaySound(rotateSound);
     }
     }
@@ -153,7 +152,9 @@ void Game::LockBlock(){
     nextBlock = GetRandomBlock();
     int rowsCleared = grid.ClearFullRows();
     if (rowsCleared > 0){
-        PlaySound(clearSound);
+        if (sfxEnabled){
+            PlaySound(clearSound);
+        }
         UpdateScore(rowsCleared, 0);
     }
 }
@@ -161,7 +162,7 @@ void Game::LockBlock(){
 bool Game::BlockFits(){
     vector<Position> tiles = currentBlock.GetCellPositions();
     for (Position item: tiles){
-        if (grid.IsCellEmpty(item.row, item.column) == false){
+        if (grid.isCellEmpty(item.row, item.column) == false){
             return false;
         }
     }
