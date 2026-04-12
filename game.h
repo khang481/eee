@@ -16,6 +16,9 @@ public:
     bool isPaused;
     int score;
     Music music;
+    bool inSettings;
+    bool musicEnabled;
+    bool sfxEnabled;
 
 private:
     void MoveBlockLeft();
