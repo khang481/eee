@@ -11,6 +11,7 @@ public:
     void Draw();
     void HandleInput();
     void MoveBlockDown();
+    void Reset();
     bool gameOver;
     bool isPaused;
     int score;
@@ -25,7 +26,6 @@ private:
     void RotateBlock();
     void LockBlock();
     bool BlockFits();
-    void Reset();
     void UpdateScore(int linesCleared, int moveDownPoints);
     Grid grid;
     vector<Block> blocks;
