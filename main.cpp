@@ -18,9 +18,9 @@ int main(){
     InitWindow(500, 620, "raylib Tetris");
     SetTargetFPS(60);
 
-    Texture2D background = LoadTexture("background.jpg");
-    Texture2D menu = LoadTexture("menu.png");
-    Texture2D setting = LoadTexture("setting.png");
+    Texture2D background = LoadTexture("Resources/background.jpg");
+    Texture2D menu = LoadTexture("Resources/menu.png");
+    Texture2D setting = LoadTexture("Resources/setting.png");
 
     Font font = LoadFontEx("Resources/monogram.ttf", 64, 0, 0);
 
