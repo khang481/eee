@@ -12,6 +12,7 @@ public:
     void HandleInput();
     void MoveBlockDown();
     bool gameOver;
+    bool isPaused;
     int score;
     Music music;
 
